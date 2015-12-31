@@ -83,3 +83,39 @@ plt.grid(b=True, which = 'major')
 plt.title("Boarding Location")
 plt.savefig("Boarding Location")
 
+
+# In[212]:
+
+male = train_df.Survived[train_df.Sex == 'male'].value_counts().sort_index()
+female = train_df.Survived[train_df.Sex == 'female'].value_counts().sort_index()
+ind = np.arange(2)
+bar_width = 0.5
+y_pos = [i + (bar_width/2) for i in ind]
+plt.barh(ind, male.values, bar_width, label = 'Male', alpha = 0.55, color = 'y')
+plt.barh(ind, female.values, bar_width, label = 'Female', left=male.values, alpha = 0.55, color = 'r')
+plt.yticks(y_pos, male.index)
+plt.ylim(min(y_pos)-bar_width, max(y_pos)+bar_width)
+plt.grid(b = True, which = 'major')
+plt.title("Survival by gender")
+plt.legend(loc= 'best')
+plt.savefig('Survival by gender')
+
+
+# In[213]:
+
+male_per = male/float(male.sum())
+female_per = female/float(female.sum())
+ind = np.arange(2)
+bar_width = 0.5
+y_pos = [i + (bar_width/2) for i in ind]
+plt.barh(ind, male_per.values, bar_width, label = 'Male', alpha = 0.55, color = 'y')
+plt.barh(ind, female_per.values, bar_width, label = 'Female', left=male_per.values, alpha = 0.55, color = 'r')
+plt.yticks(y_pos, male_per.index)
+plt.xlim(0,1.5)
+plt.ylim(min(y_pos)-bar_width, max(y_pos)+bar_width)
+plt.grid(b = True, which = 'major')
+plt.title("Survival by gender")
+plt.legend(loc= 'upper right')
+plt.savefig('Survival by gender (percent)')
+
+
