@@ -119,3 +119,56 @@ plt.legend(loc= 'upper right')
 plt.savefig('Survival by gender (percent)')
 
 
+# In[227]:
+
+fig = plt.figure(figsize = (9,2), dpi = 1600)
+ax1 = fig.add_subplot(121)
+train_df.Survived[train_df.Sex == 'male'][train_df.Pclass == 1].value_counts().sort_index().plot(kind = "bar", label = "male, upper", alpha = 0.55)
+plt.grid(b=True, which = "major")
+plt.title("Survival of Male in Upperclass")
+plt.legend(loc="best")
+
+ax1 = fig.add_subplot(122)
+train_df.Survived[train_df.Sex == 'female'][train_df.Pclass == 1].value_counts().sort_index().plot(kind = "bar", label = "female, upper", alpha = 0.55)
+plt.grid(b=True, which = "major")
+plt.title("Survival of Female in Upperclass")
+plt.legend(loc="best")
+
+plt.savefig("Survival of Upperclass")
+
+
+# In[232]:
+
+fig = plt.figure(figsize = (9,2), dpi = 1600)
+ax1 = fig.add_subplot(121)
+train_df.Survived[train_df.Sex == 'male'][train_df.Pclass == 2].value_counts().sort_index().plot(kind = "bar", label = "male, middle", alpha = 0.55)
+plt.grid(b=True, which = "major")
+plt.title("Survival of Male in Middleclass")
+plt.legend(loc="best")
+
+ax1 = fig.add_subplot(122)
+train_df.Survived[train_df.Sex == 'female'][train_df.Pclass == 2].value_counts().sort_index().plot(kind = "bar", label = "female, middle", alpha = 0.55)
+plt.grid(b=True, which = "major")
+plt.title("Survival of Female in Middleclass")
+plt.legend(loc="best")
+
+plt.savefig("Survival of Middleclass")
+
+
+# In[233]:
+
+fig = plt.figure(figsize = (9,2), dpi = 1600)
+ax1 = fig.add_subplot(121)
+train_df.Survived[train_df.Sex == 'male'][train_df.Pclass == 3].value_counts().sort_index().plot(kind = "bar", label = "male, lower", alpha = 0.55)
+plt.grid(b=True, which = "major")
+plt.title("Survival of Male in Lowerclass")
+plt.legend(loc="best")
+
+ax1 = fig.add_subplot(122)
+train_df.Survived[train_df.Sex == 'female'][train_df.Pclass == 3].value_counts().sort_index().plot(kind = "bar", label = "female, lower", alpha = 0.55)
+plt.ylim(0,100)
+plt.grid(b=True, which = "major")
+plt.title("Survival of Female in Lowerclass")
+plt.legend(loc="best")
+
+plt.savefig("Survival of Lowerclass")
