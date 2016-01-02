@@ -55,6 +55,35 @@ result['Logit'] = [res, formula]
 res.summary()
 
 
+# In[381]:
+
+ypred = res.predict(x)
+
+
+# In[399]:
+
+#predictions vs actual
+plt.figure(figsize=(18,4));
+plt.subplot(121, axisbg = "#DBDBDB")
+plt.plot(x.index, ypred, 'bo', x.index, y, 'mo', alpha = 0.25)
+plt.grid(color = "white", linestyle = "dashed")
+plt.title("Logist predictions in Training dataset")
+
+#residual
+ax2 = plt.subplot(122, axisbg = "#DBDBDB")
+plt.plot(res.resid_dev, 'r-')
+plt.grid(color = "white", linestyle = "dashed")
+ax2.set_xlim(-1, len(res.resid_dev))
+plt.title("Residuals")
+
+plt.savefig("Logistic Results Analysis")
+
+
+# In[ ]:
+
+
+
+
 # In[369]:
 
 test_df = pd.read_csv('test.csv', header=0)
@@ -103,5 +132,3 @@ ids["Survived"] = pre
 
 ids.to_csv("predict.csv",index=False)
 #using the logistic model, filling the missing value with median age the score is 0.77512
-
-
